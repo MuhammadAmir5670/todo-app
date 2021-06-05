@@ -1,0 +1,100 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    {% block title %}
+    <title>Todo App</title>
+    {% endblock title %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Optional Stylesheets -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    {% block Stylesheets %}
+    {% endblock Stylesheets %}
+
+  </head>
+  <body>
+    {% block body %}
+
+
+    {% block main %}
+    <div
+      class="app-container d-flex align-items-center justify-content-center flex-column"
+      ng-app="myApp"
+      ng-controller="myController">
+      <h3>Todo App</h3>
+      <div class="d-flex align-items-center mb-3">
+        <div class="form-group mr-3 mb-0">
+          <input
+            ng-model="yourTask"
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput"
+            placeholder="Enter a task here"
+          />
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary mr-3"
+          ng-click="saveTask()"
+        >
+          Save
+        </button>
+        <button type="button" class="btn btn-warning" ng-click="getTask()">
+          Get Tasks
+        </button>
+      </div>
+      <div class="table-wrapper">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Todo item</th>
+              <th>status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              ng-repeat="task in tasks"
+              class=""
+            >
+              <td></td>
+              <td>
+                
+              </td>
+              <td></td>
+              <td>
+                <button class="btn btn-danger" ng-click="delete($index)">
+                  Delete
+                </button>
+                <button class="btn btn-success" ng-click="finished($index)">
+                  Finished
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endblock main %}
+
+    {% endblock body %}
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    {% block script %}
+    {% endblock script %}
+    
+  </body>
+</html>

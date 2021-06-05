@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+
+{% block main %}
+    
+<div class="container">
+    <h1 class="text-center my-5">Todo App</h1>
+    
+    <!-- Task Form -->
+    <div class="row justify-content-center task-form">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Form Inputs -->
+                    <form method="POST" class="d-flex align-items-center justify-content-center">
+                        {% csrf_token %}
+                        <div class="form-group w-75 m-0">
+                            {{ form.title|attr:"class:form-control"|attr:"placeholder:Enter a task here" }}
+                        </div>
+                        <button type="submit" class="btn btn-success ml-3 w-25">Update</button>
+                    </form> 
+                </div>
+            </div>
+      </div>
+    </div>
+</div>
+
+{% endblock main %}
+    

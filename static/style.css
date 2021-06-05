@@ -1,0 +1,14 @@
+.task-item{
+    padding: 20px 0px;
+    cursor: pointer;
+}
+
+.task-item:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.task-form {
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}

@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load widget_tweaks %}
+
+
+{% block main %}
+<div class="container">
+    <h1 class="text-center my-5">Todo App</h1>
+    
+    <!-- Task Form -->
+    <div class="row justify-content-center task-form">
+        <div class="col-12 col-md-9 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Form Inputs -->
+                    <form method="POST" action="{% url 'create-task' %}" class="d-flex align-items-center justify-content-center">
+                        {% csrf_token %}
+                        <div class="form-group w-75 m-0">
+                            {{ form.title|attr:"class:form-control"|attr:"placeholder:Enter a task here" }}
+                        </div>
+                        <button type="submit" class="btn btn-success ml-3 w-25">Add</button>
+                    </form> 
+                </div>
+            </div>
+      </div>
+    </div>
+
+    <!-- Tasks -->
+    <div class="row justify-content-center mt-3">
+        <div class="col-12 col-md-9 col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="list-wrapper">
+                        {% for task in tasks %}
+                            <div class="task-item d-flex align-items-center">
+                                <h6 class="m-0 task-title">{{ task }}</h6><a href="{% url 'delete-task' task.id %}" class="btn btn-sm btn-danger ml-auto">Remove</a> <a href="{% url 'update-task' task.id %}" class="btn btn-sm btn-warning ml-2">Update</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock main %}
+    
